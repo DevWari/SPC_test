@@ -90,7 +90,7 @@ exports.updateMetaData = async(req, res) => {
     return;
   }
 
- const transaction = await sequelize.transaction();
+ const transaction = await db.sequelize.transaction();
   
   try {    
     const videoData = await Video.findOne({ where: { video_id: videoId}, include: ['user', 'metadata']}, { transaction: transaction })
