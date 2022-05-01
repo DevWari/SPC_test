@@ -17,8 +17,11 @@ module.exports = (sequelize, Sequelize) => {
         name: 'Genny',
         total_size: 20
       });
-    });
-    
+      User.create({
+        name: 'Kan',
+        total_size: 20
+      });
+    });   
   
     return User;
   };
