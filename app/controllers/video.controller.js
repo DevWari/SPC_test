@@ -117,18 +117,21 @@ exports.updateMetaData = async(req, res) => {
               message: "MetaData was updated successfully."              
             });
           } else {
+            await transaction.rollback();
             res.status(404).send({
               status: false,
               message: `Cannot update MetaData with id=${videoId}. Maybe MetaData was not found or req.body is empty!`
           });
         }                 
       } else {
+        await transaction.rollback();
         res.status(404).send({
           status: false,
           message: `Cannot update MetaData with id=${videoId}. Maybe MetaData was not found or req.body is empty!`
         });
       }
     } else {
+      await transaction.rollback();
       res.status(404).send({
         status: false,  
         message: `Cannot update MetaData with id=${videoId}. Maybe MetaData was not found or req.body is empty!`
