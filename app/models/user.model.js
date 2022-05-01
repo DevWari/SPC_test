@@ -4,7 +4,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       total_size: {
-        type: Sequelize.BIGINT
+        type: Sequelize.INTEGER
       }
     });
   
