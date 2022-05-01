@@ -25,4 +25,10 @@ node server.js
            - video_id: video id
            - video_size: video size
            - viewer_count: viewers count
-    
+
+## Database
+
+- MySQL
+- Database Name: db_video
+- import database
+   - You can find the .sql file /app/db/db.sql for importing database
