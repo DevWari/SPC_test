@@ -93,7 +93,7 @@ exports.updateMetaData = async(req, res) => {
  const transaction = await sequelize.transaction();
   
   try {    
-    const videoData = await Video.findOne({ where: { video_id: videoId}, include: ['user', 'metadata']})
+    const videoData = await Video.findOne({ where: { video_id: videoId}, include: ['user', 'metadata']}, { transaction: transaction })
     if (videoData) {
       const oldTotalSize = videoData.user.total_size      
       const oldVideoSize = videoData.metadata.size      
@@ -103,14 +103,14 @@ exports.updateMetaData = async(req, res) => {
         where: {
           id: videoData.user_id
         }
-      });
+      }, { transaction: transaction });
 
       if (userNum == 1) {
         const num = await MetaData.update({ size: videoSize, count: viewerCount }, {
           where: {
             id: videoId
           }
-        });
+        }, { transaction: transaction });
         if (num == 1) {
             res.send({
               status: true,
