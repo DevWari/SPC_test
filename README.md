@@ -31,4 +31,6 @@ node server.js
 - MySQL
 - Database Name: db_video
 - import database
-   - You can find the .sql file /app/db/db.sql for importing database
+   - You can find the sql file /app/db/db.sql for importing database
+   - You must create database from this sql
+   - (Note: ) if you don't create database without this sql, you can get wrong total video size created by a user.
