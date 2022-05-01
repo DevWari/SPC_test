@@ -89,6 +89,8 @@ exports.updateMetaData = async(req, res) => {
     });
     return;
   }
+
+ const transaction = await sequelize.transaction();
   
   try {    
     const videoData = await Video.findOne({ where: { video_id: videoId}, include: ['user', 'metadata']})
@@ -133,6 +135,7 @@ exports.updateMetaData = async(req, res) => {
       });
     }    
   } catch (e) {    
+    await transaction.rollback();
     const response = {
       status: false,      
       message: `Error updating MetaData with id = ${videoId}.`
